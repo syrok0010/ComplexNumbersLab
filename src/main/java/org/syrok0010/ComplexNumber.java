@@ -1,51 +1,51 @@
 package org.syrok0010;
 
 public class ComplexNumber {
-    private final double Re;
-    private final double Im;
+    private final double re;
+    private final double im;
 
     public ComplexNumber(double re) {
-        Re = re;
-        Im = 0;
+        this.re = re;
+        im = 0;
     }
 
     public ComplexNumber(double re, double im) {
-        Re = re;
-        Im = im;
+        this.re = re;
+        this.im = im;
     }
 
     public double getIm() {
-        return Im;
+        return im;
     }
 
     public double getRe() {
-        return Re;
+        return re;
     }
 
     public ComplexNumber add(ComplexNumber other) {
         if (other == null)
             return this;
-        return new ComplexNumber(this.Re + other.getRe(), this.Im + other.getIm());
+        return new ComplexNumber(re + other.getRe(), im + other.getIm());
     }
 
     public ComplexNumber add(double other) {
-        return new ComplexNumber(this.Re + other, this.Im);
+        return new ComplexNumber(re + other, im);
     }
 
     public ComplexNumber subtract(ComplexNumber other) {
         if (other == null)
             return this;
-        return new ComplexNumber(this.Re - other.getRe(), this.Im - other.getIm());
+        return new ComplexNumber(re - other.getRe(), im - other.getIm());
     }
 
     public ComplexNumber subtract(double other) {
-        return new ComplexNumber(this.Re - other, this.Im);
+        return new ComplexNumber(re - other, im);
     }
 
     public ComplexNumber multiply(ComplexNumber other) {
         if (other == null)
             return this;
-        return new ComplexNumber(this.Re * other.Re - this.Im * other.Im, this.Im * other.Re + this.Re * other.Im);
+        return new ComplexNumber(re * other.re - im * other.im, im * other.re + re * other.im);
     }
 
     public ComplexNumber multiply(double other) {
@@ -55,10 +55,10 @@ public class ComplexNumber {
     public ComplexNumber divide(ComplexNumber other) {
         if (other == null)
             return this;
-        var a = this.Re;
-        var b = this.Im;
-        var c = other.Re;
-        var d = other.Im;
+        var a = re;
+        var b = im;
+        var c = other.re;
+        var d = other.im;
         var re = (a * c + b * d) / (c * c + d * d);
         var im = (b * c - a * d) / (c * c + d * d);
         return new ComplexNumber(re, im);
@@ -70,7 +70,7 @@ public class ComplexNumber {
 
     @Override
     public String toString() {
-        if (Im == 0) return Double.toString(Re);
-        return Re + " + " + Im + "i";
+        if (im == 0) return Double.toString(re);
+        return re + " + " + im + "i";
     }
 }
