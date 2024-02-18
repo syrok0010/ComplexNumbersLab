@@ -1,5 +1,7 @@
 package org.syrok0010;
 
+import java.util.Objects;
+
 public class ComplexNumber {
     private final double re;
     private final double im;
@@ -55,16 +57,17 @@ public class ComplexNumber {
     public ComplexNumber divide(ComplexNumber other) {
         if (other == null)
             return this;
-        var a = re;
-        var b = im;
-        var c = other.re;
-        var d = other.im;
-        var re = (a * c + b * d) / (c * c + d * d);
-        var im = (b * c - a * d) / (c * c + d * d);
-        return new ComplexNumber(re, im);
+        if (other.equals(new ComplexNumber(0, 0)))
+            throw new ArithmeticException("Zero division");
+        double divisor = other.re * other.re + other.im * other.im;
+        var resRe = (re * other.re + im * other.im) / divisor;
+        var resIm = (im * other.re - re * other.im) / divisor;
+        return new ComplexNumber(resRe, resIm);
     }
 
     public ComplexNumber divide(double other) {
+        if (other == 0)
+            throw new ArithmeticException("Zero division");
         return divide(new ComplexNumber(other, 0));
     }
 
@@ -72,5 +75,17 @@ public class ComplexNumber {
     public String toString() {
         if (im == 0) return Double.toString(re);
         return re + " + " + im + "i";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ComplexNumber that)) return false;
+        return Double.compare(re, that.re) == 0 && Double.compare(im, that.im) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(re, im);
     }
 }
