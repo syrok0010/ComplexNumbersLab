@@ -1,6 +1,7 @@
 package org.syrok0010;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class Matrix {
     private final int rows;
@@ -197,20 +198,13 @@ public class Matrix {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for (int i = 0; i < this.rows; i++) {
-            sb.append("[");
-            for (int j = 0; j < this.cols; j++) {
-                sb.append(this.get(i, j));
-                if (j < this.cols - 1)
-                    sb.append(", ");
-            }
-            sb.append("]");
-            if (i < this.rows - 1)
-                sb.append(",\n");
-        }
-        sb.append("]");
-        return sb.toString();
+        return Arrays
+                .stream(this.data)
+                .map(row -> Arrays
+                    .stream(row)
+                    .map(ComplexNumber::toString)
+                    .collect(Collectors.joining(", "))
+                )
+                .collect(Collectors.joining("\n")) + "\n";
     }
 }
