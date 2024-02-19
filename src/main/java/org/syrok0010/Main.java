@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         var rnd = new Random();
         var m = 3;
-        var n = 2;
+        var n = 3;
         var data1 = new ComplexNumber[m][n];
         var data2 = new ComplexNumber[m][n];
         for (int i = 0; i < m; i++)
