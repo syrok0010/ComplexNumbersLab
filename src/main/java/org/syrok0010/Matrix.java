@@ -22,7 +22,7 @@ public class Matrix {
     }
 
     public Matrix(int rows, int cols) {
-        if (rows < 0 || cols < 0)
+        if (rows <= 0 || cols <= 0)
             throw new IllegalArgumentException("Negative rows or cols count");
         this.rows = rows;
         this.cols = cols;
