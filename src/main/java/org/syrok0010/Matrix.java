@@ -203,7 +203,7 @@ public class Matrix {
                 .map(row -> Arrays
                     .stream(row)
                     .map(ComplexNumber::toString)
-                    .collect(Collectors.joining(", "))
+                    .collect(Collectors.joining(" "))
                 )
                 .collect(Collectors.joining("\n")) + "\n";
     }

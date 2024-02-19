@@ -74,7 +74,7 @@ public class ComplexNumber {
     @Override
     public String toString() {
         if (im == 0) return Double.toString(re);
-        return re + " + " + im + "i";
+        return im > 0 ? re + "+" + im + "i" : re + "" + im + "i";
     }
 
     @Override

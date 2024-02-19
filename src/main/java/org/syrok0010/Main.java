@@ -5,10 +5,12 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
         var rnd = new Random();
-        var data1 = new ComplexNumber[2][2];
-        var data2 = new ComplexNumber[2][2];
-        for (int i = 0; i < 2; i++)
-            for (int j = 0; j < 2; j++) {
+        var m = 3;
+        var n = 2;
+        var data1 = new ComplexNumber[m][n];
+        var data2 = new ComplexNumber[m][n];
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++) {
                 data1[i][j] = new ComplexNumber(rnd.nextDouble(-10, 10), rnd.nextDouble(-10, 10));
                 data2[i][j] = new ComplexNumber(rnd.nextDouble(-10, 10), rnd.nextDouble(-10, 10));
             }
